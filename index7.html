@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JS Basics</title>
+  <style>
+    .todo {
+      float: left;
+      cursor: pointer;
+    }
+    .done {
+      float: left;
+      margin-left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ol class="todo" id="todo">
+    <h3>To Do:</h3>
+  </ol>
+
+  <ol class="done" id="done">
+    <h3>Done:</h3>
+  </ol>
+
+<script>
+  var asdf = [{
+      "completed": false,
+      "id": 1,
+      "title": "Delectus aut autem",
+    },
+    {
+      "completed": false,
+      "id": 2,
+      "title": "Quis ut nam facilis et officia qui",
+    },
+    {
+      "completed": false,
+      "id": 3,
+      "title": "Fugiat veniam minus",
+    },
+    {
+      "completed": true,
+      "id": 4,
+      "title": "Et porro tempora",
+    },
+    {
+      "completed": false,
+      "id": 5,
+      "title": "Laboriosam mollitia et enim quasi adipisci quia provident illum",
+    },
+    {
+      "completed": false,
+      "id": 6,
+      "title": "Qui ullam ratione quibusdam voluptatem quia omnis",
+    },
+    {
+      "completed": false,
+      "id": 7,
+      "title": "Illo expedita consequatur quia in",
+      "userId": 1
+    },
+    {
+      "completed": true,
+      "id": 8,
+      "title": "Quo adipisci enim quam ut ab",
+    },
+    {
+      "completed": false,
+      "id": 9,
+      "title": "Molestiae perspiciatis ipsa",
+    },
+    {
+      "completed": true,
+      "id": 10,
+      "title": "Illo est ratione doloremque quia maiores aut",
+    }
+  ];
+  
+  asdf.map(function(element) {
+    var task = document.createElement("li");
+    var task_text = document.createTextNode(element.title);
+    task.appendChild(task_text);
+    var button = document.createElement("button");
+    button.onclick = function completeTask() {
+      if(element.completed == false){
+        element.completed == true;
+        var list = document.getElementById("done");
+        list.appendChild(task);
+        list = document.getElementById("todo");
+        list.removeChild(button);
+      }
+    }
+    if (element.completed == true) {
+      var list = document.getElementById("done");
+      list.appendChild(task);
+    } else {
+      var list = document.getElementById("todo");
+      list.appendChild(task);
+      var button_text = document.createTextNode("Completed");
+      button.appendChild(button_text);
+      list.appendChild(button);
+    }
+  });
+</script>
+
+</body>
+
+</html>
